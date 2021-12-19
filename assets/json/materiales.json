@@ -1,0 +1,17 @@
+[
+    {
+        "nombre" : "Materiales",
+        "descripcion" : "Elementos utilizados para el trabajo de mantenimiento como cables, aisladores, tensores, transformadores, etc.",
+        "imagen" : "material.jpg"
+    },
+    {
+        "nombre" : "Herramientas",
+        "descripcion" : "Elementos utilizados para la operación de los mantenimientos como llaves, alicates, pérdiga, etc.",
+        "imagen" : "herramienta.jpg"
+    },
+    {
+        "nombre" : "Equipo de protección",
+        "descripcion" : "Elementos utilizados por el personal técnico para los mantenimientos como cascos, guantes, botas, overol, etc.",
+        "imagen" : "equipo.jpg"
+    }
+]
