@@ -9,8 +9,7 @@ class TurismoService {
   Future<List<Turismo>?> getMantenimientos() async {
     List<Turismo> result = [];
     try {
-      var url =
-          Uri.parse('https://turismmascha-backend.web.app/api/mantenimiento');
+      var url = Uri.parse('https://turismmascha-backend.web.app/api/places');
       var response = await http.get(url);
       if (response.body.isEmpty) return result;
       List<dynamic> listBody = json.decode(response.body);
