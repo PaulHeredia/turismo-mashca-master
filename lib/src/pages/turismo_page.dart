@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mashcas_turismo/src/models/turismo_model.dart';
-import 'package:mashcas_turismo/src/services/turismo_service.dart';
 
 class TurismoPage extends StatelessWidget {
   const TurismoPage({Key? key, required this.turismo}) : super(key: key);
