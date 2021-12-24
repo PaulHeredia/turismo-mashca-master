@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mashcas_turismo/src/theme/app_theme.dart';
+import 'package:mashcas_turismo/src/providers/Theme_providers.dart';
+//import 'package:mashcas_turismo/src/theme/app_theme.dart';
 import 'package:mashcas_turismo/src/utils/main_menu.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,9 +27,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<AppTheme>(context);
+    final theme = Provider.of<ThemeProviders>(context);
     return SafeArea(
       child: Scaffold(
+        /*drawer: Drawer(
+            child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Configuración'),
+            ),
+            ListTile(
+              title: const Text('Modo oscuro'),
+              trailing: Switch(
+                  value: theme.mode,
+                  onChanged: (bool value) async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setBool("mode", value);
+                    theme.mode = value;
+                  }),
+            ),
+          ],
+        )),*/
         appBar: AppBar(
           centerTitle: true,
           title: Text(_options[_selectedIndex]),
@@ -40,14 +65,34 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                 children: [
                   Expanded(child: Image.asset('assets/images/config.png')),
-                  const Text('Configuracion Tema'),
+                  const Text('Configuracion Tema', textAlign: TextAlign.center),
                   const SizedBox(
                     height: 10.0,
                   )
                 ],
               )), //Padding(padding: )
-              const Text('Elija el Tema de preferencia'),
-              ListaBotones()
+              const Text('Elija el Tema de preferencia',
+                  textAlign: TextAlign.center),
+              //ListaBotones()
+              ListTile(
+                title: const Text('Modo Claro'),
+                leading: const Icon(
+                  Icons.wb_sunny,
+                  color: Colors.amber,
+                ),
+                trailing: Switch(
+                    value: theme.mode,
+                    onChanged: (bool value) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setBool("mode", value);
+                      theme.mode = value;
+                      const Icon(
+                        Icons.brightness_2,
+                        color: Colors.blue,
+                      );
+                    }),
+              ),
             ],
           ),
         ),
@@ -70,7 +115,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 // ignore: use_key_in_widget_constructors
-class ListaBotones extends StatelessWidget {
+/*class ListaBotones extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<AppTheme>(context);
@@ -86,10 +131,10 @@ class ListaBotones extends StatelessWidget {
       ],
     );
   }
-}
+}*/
 
 // ignore: unused_element
-class _BarraLateral extends State<HomePage> {
+/*class _BarraLateral extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<AppTheme>(context);
@@ -111,4 +156,4 @@ class _BarraLateral extends State<HomePage> {
               ),
             )));
   }
-}
+}*/

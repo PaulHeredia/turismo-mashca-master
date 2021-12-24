@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mashcas_turismo/src/providers/Theme_providers.dart';
+//import 'package:mashcas_turismo/src/providers/Theme_providers.dart';
 
 class AppTheme with ChangeNotifier {
   //AppTheme._();
-  static final Color colorHighPriority = Colors.red;
+  /*static final Color colorHighPriority = Colors.red;
   static final Color colorMediumPriority = Colors.yellow;
   static const Color colorLowPriority = Colors.green;
   ThemeData _themeData;
@@ -51,9 +51,13 @@ class AppTheme with ChangeNotifier {
         textTheme: _textTheme,
         brightness: lightMode ? Brightness.light : Brightness.dark);
   }
-}
-
-class ThemeProvider with ChangeNotifier {
+}*/
+  static ThemeData themeData(bool lightMode) {
+    return ThemeData(
+        //textTheme: _textTheme,
+        brightness: lightMode ? Brightness.dark : Brightness.light);
+  }
+/*class ThemeProvider with ChangeNotifier {
   ThemePreference themePreference = ThemePreference();
   String _theme = ThemePreference.LIGHT;
 
@@ -65,7 +69,6 @@ class ThemeProvider with ChangeNotifier {
     _theme = theme;
     themePreference.setModeTheme(theme);
     notifyListeners();
-  }
+  }*/
 
-  bool isDarkTheme() => _theme == ThemePreference.DARK;
 }

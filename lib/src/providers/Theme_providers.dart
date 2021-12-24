@@ -26,11 +26,11 @@ class ThemeProviders extends ChangeNotifier {
 
   Future<bool> initPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _mode = prefs.getBool("mode") ?? true;
+    _mode = prefs.getBool("mode") ?? false;
     return _mode;
   }
 }
-
+/*
 class ThemePreference {
   static const THEME_MODE = "MODE";
   static const DARK = "DARK";
@@ -45,4 +45,4 @@ class ThemePreference {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(THEME_MODE) ?? LIGHT;
   }
-}
+}*/
