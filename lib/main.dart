@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mashcas_turismo/src/pages/home_page.dart';
-import 'package:mashcas_turismo/src/providers/Theme_providers.dart';
+import 'package:mashcas_turismo/src/providers/theme_providers.dart';
 import 'package:mashcas_turismo/src/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -44,9 +44,9 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final mainProvider = Provider.of<ThemeProviders>(context, listen: true);
+    final themeProvider = Provider.of<ThemeProviders>(context, listen: true);
     return FutureBuilder<bool>(
-        future: mainProvider.initPrefs(),
+        future: themeProvider.initPrefs(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const SizedBox.square(
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
               builder: () => MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
-                theme: AppTheme.themeData(mainProvider.mode),
+                theme: AppTheme.themeData(themeProvider.mode),
                 home: const HomePage(),
               ),
             );
