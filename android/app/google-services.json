@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "705774808075",
+    "firebase_url": "https://turismmascha-backend-default-rtdb.firebaseio.com",
+    "project_id": "turismmascha-backend",
+    "storage_bucket": "turismmascha-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705774808075:android:b59fd75e0cda8cdce76b0e",
+        "android_client_info": {
+          "package_name": "com.example.maschas_turismo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705774808075-udl5meep7o5ejuibdoicej49hpu3ofd0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXW6dgWVA-WQM154gR-OFWK6c3tqranWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705774808075-udl5meep7o5ejuibdoicej49hpu3ofd0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

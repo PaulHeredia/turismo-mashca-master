@@ -17,7 +17,7 @@ class _MantenimientosWidgetState extends State<TurismoWidget> {
   @override
   void initState() {
     super.initState();
-    _downloadMantenimientos();
+    _downloadTurismo();
   }
 
   @override
@@ -36,7 +36,7 @@ class _MantenimientosWidgetState extends State<TurismoWidget> {
                   ));
   }
 
-  _downloadMantenimientos() async {
+  _downloadTurismo() async {
     _listaTurismo = await _turismoService.getMantenimientos();
     if (mounted) {
       setState(() {});

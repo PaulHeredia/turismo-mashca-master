@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mashcas_turismo/src/pages/home_page.dart';
-import 'package:mashcas_turismo/src/providers/theme_providers.dart';
+import 'package:mashcas_turismo/src/providers/theme_prods.dart';
 import 'package:mashcas_turismo/src/theme/app_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 /*void main() => runApp(MyApp());
 
@@ -34,7 +36,11 @@ class MaterialAppWithTheme extends StatelessWidget {
     //return MaterialApp(theme: theme.getTheme(), home: const HomePage());
   }
 }*/
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ThemeProviders()),
   ], child: const MyApp()));
@@ -59,7 +65,9 @@ class MyApp extends StatelessWidget {
               builder: () => MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
-                theme: AppTheme.themeData(themeProvider.mode),
+                theme: AppTheme.themeData(
+                  themeProvider.mode,
+                ),
                 home: const HomePage(),
               ),
             );

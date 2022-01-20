@@ -55,8 +55,8 @@ class AppTheme with ChangeNotifier {
   static ThemeData themeData(bool lightMode) {
     return ThemeData(
         //textTheme: _textTheme,
-        brightness: lightMode ? Brightness.dark : Brightness.light);
-  }
+        brightness: lightMode ? Brightness.dark : Brightness.light,
+        primarySwatch: Colors.cyan);
 /*class ThemeProvider with ChangeNotifier {
   ThemePreference themePreference = ThemePreference();
   String _theme = ThemePreference.LIGHT;
@@ -70,5 +70,5 @@ class AppTheme with ChangeNotifier {
     themePreference.setModeTheme(theme);
     notifyListeners();
   }*/
-
+  }
 }
