@@ -6,7 +6,7 @@ import 'package:mashcas_turismo/src/models/turismo_model.dart';
 class TurismoService {
   TurismoService();
 
-  Future<List<Turismo>?> getMantenimientos() async {
+  Future<List<Turismo>?> getPlaces() async {
     List<Turismo> result = [];
     try {
       var url = Uri.parse('https://turismmascha-backend.web.app/api/places');

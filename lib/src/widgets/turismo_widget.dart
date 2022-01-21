@@ -37,7 +37,7 @@ class _MantenimientosWidgetState extends State<TurismoWidget> {
   }
 
   _downloadTurismo() async {
-    _listaTurismo = await _turismoService.getMantenimientos();
+    _listaTurismo = await _turismoService.getPlaces();
     if (mounted) {
       setState(() {});
     }

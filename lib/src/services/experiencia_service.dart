@@ -11,7 +11,7 @@ class ExperienciaService {
   ExperienciaService();
   final String _urlRoot = "https://turismmascha-backend.web.app/api/foto";
 
-  Future<int> postExperiencia(Foto foto) async {
+  Future<int?> postExperiencia(Foto foto) async {
     try {
       var uri = Uri.parse(_urlRoot);
       String _fotoBody = fotoToJson(foto);
@@ -19,10 +19,12 @@ class ExperienciaService {
       var response = await http.post(uri, headers: _headers, body: _fotoBody);
       if (response.body.isEmpty) return 400;
       Map<String, dynamic> content = json.decode(response.body);
-      int result = content["estado"];
+      var result = content["estado"];
       developer.log("Estado $result");
       return result;
     } catch (ex) {
+      // ignore: avoid_print
+      print("Aqui");
       developer.log("Error $ex");
       return 500;
     }
@@ -36,8 +38,8 @@ class ExperienciaService {
       if (response.body.isEmpty) return result;
       List<dynamic> listBody = json.decode(response.body);
       for (var item in listBody) {
-        var mantenimiento = Foto.fromJson(item);
-        result.add(mantenimiento);
+        var places = Foto.fromJson(item);
+        result.add(places);
       }
       return result;
     } catch (ex) {
@@ -47,7 +49,7 @@ class ExperienciaService {
   }
 
   Future<String> uploadImage(File image) async {
-    final cloudinary = CloudinaryPublic('', '', cache: false);
+    final cloudinary = CloudinaryPublic('mashcas', 'cpxbr6c8', cache: false);
     try {
       CloudinaryResponse response = await cloudinary.uploadFile(
         CloudinaryFile.fromFile(image.path,

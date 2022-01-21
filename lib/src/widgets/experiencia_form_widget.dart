@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:mashcas_turismo/src/models/foto_model.dart';
+import 'package:mashcas_turismo/src/pages/home_page.dart';
 import 'package:mashcas_turismo/src/services/experiencia_service.dart';
 //import 'package:image_picker/image_picker.dart';
 //import 'package:mashcas_turismo/src/models/foto_model.dart';
@@ -157,19 +158,21 @@ class _ExperienciaFormWidget extends State<ExperienciaFormWidget> {
     } else {
       _imagen = null;
       //print('No image selected.');
+
     }
     setState(() {});
   }
 
   _validateObservacion(String value) {
     if (value.length < 2) {
-      return "Debe ingresar al menos 15 caracteres";
+      return "Debe ingresar al menos 10 caracteres";
     }
     return null; //Cuando se retorna nulo el campo te texto está validado
   }
 
   _sendForm() async {
     if (!_formKey.currentState!.validate()) return;
+
     _onSaving = true;
     setState(() {});
     _formKey.currentState!.save(); //Guarda el form localmente
@@ -179,11 +182,33 @@ class _ExperienciaFormWidget extends State<ExperienciaFormWidget> {
     }
 
     //Invoca al servicio POST para enviar la Foto
-    int estado = await _experienciaService.postExperiencia(_foto);
-    if (estado == 201) {
-      _formKey.currentState!.reset();
-      _onSaving = false;
-      Navigator.pop(context);
-    }
+    int? estado = await _experienciaService.postExperiencia(_foto);
+    _formKey.currentState!.reset();
+    _onSaving = false;
+    // ignore: avoid_print
+    print(estado);
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text(
+              'Gracias por su registro',
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              TextButton(
+                  child: const Text(
+                    'Continuar',
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  })
+            ],
+          );
+        });
   }
 }
