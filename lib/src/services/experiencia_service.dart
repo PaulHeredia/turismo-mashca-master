@@ -28,9 +28,26 @@ class ExperienciaService {
     }
   }
 
+  Future<List<Foto>?> getFotos(String id) async {
+    List<Foto> result = [];
+    try {
+      var url = Uri.parse('$_urlRoot/$id');
+      var response = await http.get(url);
+      if (response.body.isEmpty) return result;
+      List<dynamic> listBody = json.decode(response.body);
+      for (var item in listBody) {
+        var mantenimiento = Foto.fromJson(item);
+        result.add(mantenimiento);
+      }
+      return result;
+    } catch (ex) {
+      developer.log("Error $ex");
+      return null;
+    }
+  }
+
   Future<String> uploadImage(File image) async {
-    final cloudinary =
-        CloudinaryPublic('turismo_mashca', 'Soyrockero19*', cache: false);
+    final cloudinary = CloudinaryPublic('', '', cache: false);
     try {
       CloudinaryResponse response = await cloudinary.uploadFile(
         CloudinaryFile.fromFile(image.path,

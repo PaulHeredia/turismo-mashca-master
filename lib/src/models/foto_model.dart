@@ -10,7 +10,6 @@ String fotoToJson(Foto data) => json.encode(data.toJson());
 
 class Foto {
   Foto({
-    this.idfoto,
     this.fecha,
     this.url,
     this.nombreLugar,
@@ -18,7 +17,6 @@ class Foto {
     this.impresiones,
   });
 
-  String? idfoto;
   DateTime? fecha;
   String? url;
   String? nombreLugar;
@@ -26,7 +24,6 @@ class Foto {
   String? impresiones;
 
   factory Foto.fromJson(Map<String, dynamic> json) => Foto(
-        idfoto: json["idfoto"],
         fecha: DateTime.parse(json["fecha"]),
         url: json["url"],
         nombreLugar: json["nombre_lugar"],
@@ -36,7 +33,6 @@ class Foto {
   factory Foto.created(String id) => Foto(fecha: DateTime.now());
 
   Map<String, dynamic> toJson() => {
-        "idfoto": idfoto,
         "fecha": fecha!.toIso8601String(),
         "url": url,
         "nombre_lugar": nombreLugar,
