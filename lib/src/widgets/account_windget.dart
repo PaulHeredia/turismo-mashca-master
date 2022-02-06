@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:mashcas_turismo/src/providers/main_providers.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class AccountWidget extends StatefulWidget {
+  const AccountWidget({Key? key}) : super(key: key);
+
+  @override
+  State<AccountWidget> createState() => _AccountWidgetState();
+}
+
+class _AccountWidgetState extends State<AccountWidget> {
+  @override
+  Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context, listen: true);
+
+    return Column(
+      children: <Widget>[
+        const SizedBox(
+          height: 60,
+        ),
+        ExpansionTile(
+          leading: const Icon(Icons.settings),
+          title: const Text("Configuración"),
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.brightness_4_outlined),
+              title: const Text('Modo Oscuro'),
+              trailing: Switch(
+                value: !mainProvider.mode,
+                onChanged: (bool value) async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setBool("mode", !value);
+                  mainProvider.mode = !value;
+                },
+              ),
+            ),
+          ],
+        ),
+        const Card(
+            elevation: 2.0,
+            child: ListTile(
+              leading: Icon(Icons.help_center),
+              title: Text("Sobre nosotros"),
+            )),
+        const Card(
+            elevation: 2.0,
+            child: ListTile(
+              leading: Icon(Icons.travel_explore_sharp),
+              title: Text("Contactos"),
+            )),
+      ],
+    );
+  }
+}
