@@ -6,28 +6,34 @@ class TurismoDetailsContentWidget extends StatelessWidget {
   const TurismoDetailsContentWidget({Key? key, required this.turismo})
       : super(key: key);
   final Turismo turismo;
-
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(8),
-      children: [
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              children: <Widget>[
-                const SizedBox(height: 8),
-                ExpandText(
-                  turismo.descripcion ?? "",
-                  maxLines: 3,
-                  arrowPadding: const EdgeInsets.all(0),
-                ),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: <Widget>[
+              const SizedBox(height: 8),
+              ExpandText(
+                "Descripción: " + turismo.descripcion.toString(),
+                maxLines: 100,
+                arrowPadding: const EdgeInsets.all(0),
+              ),
+              ExpandText(
+                "Longitud: " + turismo.longitud.toString(),
+                maxLines: 3,
+                arrowPadding: const EdgeInsets.all(0),
+              ),
+              Text(
+                "Latitud: " + turismo.latitud.toString(),
+                textAlign: TextAlign.right,
+              ),
+            ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

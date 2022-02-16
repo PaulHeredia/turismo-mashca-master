@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mashcas_turismo/src/pages/home_page.dart';
+import 'package:mashcas_turismo/src/pages/login_page.dart';
+import 'package:mashcas_turismo/src/pages/signup_page.dart';
 import 'package:mashcas_turismo/src/providers/main_providers.dart';
 
 import 'package:mashcas_turismo/src/theme/app_theme.dart';
@@ -40,13 +42,13 @@ class MyApp extends StatelessWidget {
                 title: 'Flutter Demo',
                 theme: AppTheme.themeData(mainProvider.mode),
                 routes: {
-                  "/home": (context) => const HomePage(),
-                  // "/login": (context) => const LoginPage(),
-                  // "/signup": (context) => const SignUpPage()
+                  // "/home": (context) => const HomePage(),
+                  "/login": (context) => const LoginPage(),
+                  "/signup": (context) => const SignUpPage()
                 },
                 home: mainProvider.token == ""
-                    ? const HomePage()
-                    //? const LoginPage()
+                    // ? const HomePage()
+                    ? const LoginPage()
                     : const HomePage(),
               ),
             );

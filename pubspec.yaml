@@ -51,6 +51,8 @@ dependencies:
   flutter_image_slideshow: ^0.1.2
   font_awesome_flutter: ^9.2.0
   fading_images_slider: ^0.0.4
+  jwt_decoder: ^2.0.1
+ 
   
 dev_dependencies:
   flutter_test:

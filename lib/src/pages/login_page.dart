@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                                       errorText: snapshot.error?.toString(),
                                       icon: const Icon(Icons.email),
                                       labelText: "Correo electrónico",
-                                      hintText: "admin@maschas.com"));
+                                      hintText: "admin@mashcas.com"));
                             }),
                         StreamBuilder<String>(
                             stream: _loginBloc.passwordStream,

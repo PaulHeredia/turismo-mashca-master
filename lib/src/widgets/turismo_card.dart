@@ -20,7 +20,6 @@ class TurismoCard extends StatelessWidget {
       leading:
           CircleAvatar(backgroundImage: NetworkImage(model.imagen.toString())),
       title: Text(model.nombre ?? ""),
-      subtitle: Text(model.descripcion ?? ""),
     ));
   }
 }

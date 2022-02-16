@@ -36,7 +36,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                       children: const [
                         Expanded(
                             child: Text(
-                          'MASHCAS TURISMO',
+                          'Turismo - Latacunga',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -57,49 +57,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                   ],
                 ),
               ),
-              Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    height: 50,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(color: Colors.white, width: 1),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 20,
-                              offset: Offset(0, 10))
-                        ]),
-                    child: Row(
-                      children: const [
-                        Expanded(
-                            child: TextField(
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 20),
-                            hintText: 'Buscar',
-                            hintStyle: TextStyle(color: Colors.grey),
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                          ),
-                        )),
-                        Padding(
-                          padding: EdgeInsets.only(right: 10),
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                  ))
             ],
-          ),
-          const SizedBox(
-            height: 20,
           ),
           Expanded(
               child: ListView(
@@ -107,18 +65,15 @@ class _LocationWidgetState extends State<LocationWidget> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'LUGARES RECOMENDADOS',
+                  'Historia Latacunga',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
             ],
-          ))
+          )),
         ],
       ),
     );

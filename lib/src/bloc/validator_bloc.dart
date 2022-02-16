@@ -16,10 +16,10 @@ class Validator {
 
   final passwordValidator = StreamTransformer<String, String>.fromHandlers(
     handleData: (data, sink) {
-      if (data.length >= 5) {
+      if (data.length >= 6) {
         sink.add(data); //La validación se cumplió
       } else {
-        sink.addError('Contraseña al menos 5 caracteres');
+        sink.addError('Contraseña al menos 6 caracteres');
       }
     },
   );
@@ -27,6 +27,15 @@ class Validator {
   final usernameValidator = StreamTransformer<String, String>.fromHandlers(
     handleData: (data, sink) {
       if (data.length >= 8) {
+        sink.add(data); //La validación se cumplió
+      } else {
+        sink.addError('Usuario al menos 8 caracteres');
+      }
+    },
+  );
+  final userValidator = StreamTransformer<String, String>.fromHandlers(
+    handleData: (data, sink) {
+      if (data.length >= 3) {
         sink.add(data); //La validación se cumplió
       } else {
         sink.addError('Usuario al menos 8 caracteres');

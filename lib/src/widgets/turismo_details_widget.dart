@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mashcas_turismo/src/models/turismo_model.dart';
 import 'package:mashcas_turismo/src/widgets/turismo_details_content_widget.dart';
+import 'package:mashcas_turismo/src/widgets/ubicacion_widget.dart';
 
-class NovelaDetailsWidget extends StatefulWidget {
-  const NovelaDetailsWidget({Key? key, required this.turismo})
+class TurismoDetailsWidget extends StatefulWidget {
+  const TurismoDetailsWidget({Key? key, required this.turismo})
       : super(key: key);
   final Turismo turismo;
 
@@ -11,11 +12,11 @@ class NovelaDetailsWidget extends StatefulWidget {
   _NovelaDetailsWidgetState createState() => _NovelaDetailsWidgetState();
 }
 
-class _NovelaDetailsWidgetState extends State<NovelaDetailsWidget>
+class _NovelaDetailsWidgetState extends State<TurismoDetailsWidget>
     with SingleTickerProviderStateMixin {
   final List<Tab> _tabs = <Tab>[
     const Tab(text: "Detalles"),
-    const Tab(text: "Capítulos"),
+    const Tab(text: "Ubicacion"),
   ];
 
   late TabController _tabController;
@@ -36,8 +37,9 @@ class _NovelaDetailsWidgetState extends State<NovelaDetailsWidget>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: TabBar(tabs: _tabs, controller: _tabController),
-        body: TabBarView(
-            children: [TurismoDetailsContentWidget(turismo: widget.turismo)],
-            controller: _tabController));
+        body: TabBarView(children: [
+          TurismoDetailsContentWidget(turismo: widget.turismo),
+          const UbiacionWidget()
+        ], controller: _tabController));
   }
 }

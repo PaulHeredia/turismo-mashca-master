@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:mashcas_turismo/src/providers/main_providers.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,7 +15,7 @@ class _AccountWidgetState extends State<AccountWidget> {
   @override
   Widget build(BuildContext context) {
     final mainProvider = Provider.of<MainProvider>(context, listen: true);
-
+    // Map<String, dynamic> content = JwtDecoder.decode(mainProvider.token);
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -39,18 +40,6 @@ class _AccountWidgetState extends State<AccountWidget> {
             ),
           ],
         ),
-        const Card(
-            elevation: 2.0,
-            child: ListTile(
-              leading: Icon(Icons.help_center),
-              title: Text("Sobre nosotros"),
-            )),
-        const Card(
-            elevation: 2.0,
-            child: ListTile(
-              leading: Icon(Icons.travel_explore_sharp),
-              title: Text("Contactos"),
-            )),
       ],
     );
   }

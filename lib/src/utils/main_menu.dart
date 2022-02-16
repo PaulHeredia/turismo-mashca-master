@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mashcas_turismo/src/models/turismo_model.dart';
-import 'package:mashcas_turismo/src/widgets/account_windget.dart';
+import 'package:mashcas_turismo/src/pages/settings_page.dart';
 import 'package:mashcas_turismo/src/widgets/experiencia_form_widget.dart';
 import 'package:mashcas_turismo/src/widgets/location_widget.dart';
 import 'package:mashcas_turismo/src/widgets/turismo_widget.dart';
@@ -24,5 +24,5 @@ List<Widget> homeWidgets = [
   const LocationWidget(),
   const TurismoWidget(),
   const ExperienciaFormWidget(isInicio: false, nombre_lugar: ""),
-  const AccountWidget()
+  const SettingsPage()
 ];

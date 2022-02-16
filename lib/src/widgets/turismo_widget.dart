@@ -23,23 +23,23 @@ class _MantenimientosWidgetState extends State<TurismoWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: _listaTurismo == null
-            ? const Center(
-                child: SizedBox.square(
-                    dimension: 50.0, child: CircularProgressIndicator()))
-            : _listaTurismo!.isEmpty
-                ? const Center(child: Text("No hay Lugares"))
-                : ListView(
-                    children: _listaTurismo!
-                        .map((e) => TurismoCard(model: e))
-                        .toList(),
-                  ));
+      body: _listaTurismo == null
+          ? const Center(
+              child: SizedBox.square(
+                  dimension: 50.0, child: CircularProgressIndicator()))
+          : _listaTurismo!.isEmpty
+              ? const Center(child: Text("No hay Lugares"))
+              : GridView.count(
+                  childAspectRatio: 0.6,
+                  crossAxisCount: 2,
+                  children:
+                      _listaTurismo!.map((e) => TurismoCard(model: e)).toList(),
+                ),
+    );
   }
 
   _downloadTurismo() async {
     _listaTurismo = await _turismoService.getPlaces();
-    if (mounted) {
-      setState(() {});
-    }
+    setState(() {});
   }
 }
