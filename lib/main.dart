@@ -3,8 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mashcas_turismo/src/pages/home_page.dart';
 import 'package:mashcas_turismo/src/pages/login_page.dart';
+import 'package:mashcas_turismo/src/pages/settings_page.dart';
 import 'package:mashcas_turismo/src/pages/signup_page.dart';
 import 'package:mashcas_turismo/src/providers/main_providers.dart';
 
@@ -127,12 +129,14 @@ class _MyAppState extends State<MyApp> {
                 routes: {
                   // "/home": (context) => const HomePage(),
                   "/login": (context) => const LoginPage(),
-                  "/signup": (context) => const SignUpPage()
+                  "/signup": (context) => const SignUpPage(),
+                  "/settings": (context) => const SettingsPage(),
                 },
                 home: mainProvider.token == ""
-                    // ? const HomePage()
                     ? const LoginPage()
-                    : const HomePage(),
+                    : JwtDecoder.isExpired(mainProvider.token)
+                        ? const LoginPage()
+                        : const HomePage(),
               ),
             );
           }
