@@ -1,6 +1,5 @@
 import 'package:mashcas_turismo/src/bloc/validator_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:rxdart/subjects.dart';
 
 class LoginBloc with Validator {
   LoginBloc();
