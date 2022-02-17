@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
 class LocationWidget extends StatefulWidget {
   const LocationWidget({Key? key}) : super(key: key);
@@ -51,9 +52,6 @@ class _LocationWidgetState extends State<LocationWidget> {
                         ))
                       ],
                     ),
-                    const SizedBox(
-                      height: 60,
-                    )
                   ],
                 ),
               ),
@@ -65,7 +63,7 @@ class _LocationWidgetState extends State<LocationWidget> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'Historia Latacunga',
+                  'Disfruta del turismo Latacungueño',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
@@ -74,6 +72,33 @@ class _LocationWidgetState extends State<LocationWidget> {
               ),
             ],
           )),
+          ImageSlideshow(
+            width: double.infinity,
+            height: 400,
+            initialPage: 0,
+            indicatorColor: Colors.blue,
+            indicatorBackgroundColor: Colors.grey,
+            children: [
+              Image.network(
+                'https://www.bucketlistec.com/wp-content/uploads/2018/03/cotopaxi.jpg',
+                fit: BoxFit.cover,
+              ),
+              Image.network(
+                'https://www.bucketlistec.com/wp-content/uploads/2018/03/cotopaxi.jpg',
+                fit: BoxFit.cover,
+              ),
+              Image.network(
+                'https://www.bucketlistec.com/wp-content/uploads/2018/03/cotopaxi.jpg',
+                fit: BoxFit.cover,
+              ),
+            ],
+            onPageChanged: (value) {
+              // ignore: avoid_print
+              print('Page changed: $value');
+            },
+            autoPlayInterval: 3000,
+            isLoop: true,
+          ),
         ],
       ),
     );

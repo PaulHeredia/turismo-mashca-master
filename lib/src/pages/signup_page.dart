@@ -122,11 +122,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                                     _signUpBloc.username,
                                                 email: _signUpBloc.email,
                                                 password: _signUpBloc.password);
-                                            int result =
-                                                await _usrServ.postUsuario(usr);
-                                            if (result == 201) {
-                                              Navigator.pop(context);
-                                            }
+
+                                            await _usrServ.postUsuario(usr);
+
+                                            Navigator.pop(context);
                                           }
                                         : null,
                                     icon: const Icon(Icons.login),
