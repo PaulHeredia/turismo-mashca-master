@@ -25,7 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Stack(
         children: [
           Container(
-            color: Theme.of(context).primaryColorDark,
+            color: Theme.of(context).primaryColorLight,
             height: size * 0.4,
           ),
           Padding(
@@ -56,7 +56,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             builder: (context, snapshot) {
                               return TextField(
                                   keyboardType: TextInputType.emailAddress,
-                                  onChanged: _signUpBloc.changeUsername,
+                                  onChanged: _signUpBloc.changeName,
                                   decoration: InputDecoration(
                                       errorText: snapshot.error?.toString(),
                                       icon: const Icon(
@@ -121,11 +121,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 displayName:
                                                     _signUpBloc.username,
                                                 email: _signUpBloc.email,
-                                                password: _signUpBloc.password);
-
-                                            await _usrServ.postUsuario(usr);
-
-                                            Navigator.pop(context);
+                                                password: _signUpBloc.password,
+                                                userName: _signUpBloc.name);
+                                            int result =
+                                                await _usrServ.postUsuario(usr);
+                                            if (result == 201) {
+                                              Navigator.pop(context);
+                                            }
+                                            // ignore: avoid_print
+                                            print(result);
                                           }
                                         : null,
                                     icon: const Icon(Icons.login),

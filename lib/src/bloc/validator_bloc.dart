@@ -33,7 +33,7 @@ class Validator {
       }
     },
   );
-  final userValidator = StreamTransformer<String, String>.fromHandlers(
+  final nameValidator = StreamTransformer<String, String>.fromHandlers(
     handleData: (data, sink) {
       if (data.length >= 3) {
         sink.add(data); //La validación se cumplió

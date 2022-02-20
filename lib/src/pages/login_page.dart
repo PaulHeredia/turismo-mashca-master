@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = true;
+  bool _obscureText = false;
   final LoginBloc _loginBloc = LoginBloc();
 
   @override

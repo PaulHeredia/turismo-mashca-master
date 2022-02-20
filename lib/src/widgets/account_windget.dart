@@ -23,11 +23,11 @@ class _AccountWidgetState extends State<AccountWidget> {
         ),
         ExpansionTile(
           leading: const Icon(Icons.settings),
-          title: const Text("Configuración"),
+          title: const Text("Configuración Tema"),
           children: <Widget>[
             ListTile(
               leading: const Icon(Icons.brightness_4_outlined),
-              title: const Text('Modo Oscuro'),
+              title: const Text('Oscuro/Claro'),
               trailing: Switch(
                 value: !mainProvider.mode,
                 onChanged: (bool value) async {

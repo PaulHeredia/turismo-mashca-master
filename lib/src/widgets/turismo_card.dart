@@ -33,7 +33,7 @@ class TurismoCard extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
                           model.nombre ?? "",
-                          maxLines: 2,
+                          maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               color: Colors.black, fontSize: 15),

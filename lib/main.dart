@@ -17,7 +17,7 @@ import 'firebase_options.dart';
 import 'dart:developer' as developer;
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  developer.log('Handling a background message ${message.messageId}'); 
+  developer.log('Handling a background message ${message.messageId}');
 }
 
 /// Create a [AndroidNotificationChannel] for heads up notifications
@@ -79,6 +79,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    _getTokenFCM();
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) {});
@@ -144,5 +145,10 @@ class _MyAppState extends State<MyApp> {
           return const SizedBox.square(
               dimension: 50.0, child: CircularProgressIndicator());
         });
+  }
+
+  _getTokenFCM() async {
+    String? token = await FirebaseMessaging.instance.getToken();
+    developer.log(token!);
   }
 }

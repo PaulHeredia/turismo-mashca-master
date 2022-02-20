@@ -14,6 +14,7 @@ class UsuarioService {
       final loginBody = {
         "email": usuario.email,
         "password": usuario.password,
+        "username": usuario.userName,
         "returnSecureToken": true
       };
       final queryParams = {"key": _firebaseAPIKey};

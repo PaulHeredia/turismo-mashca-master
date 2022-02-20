@@ -23,17 +23,12 @@ class SettingsPage extends StatelessWidget {
                     trailing: IconButton(
                         onPressed: () {
                           mainProvider.token = "";
-                          Navigator.pop(context);
+                          Navigator.pushNamed(context, "/login");
                         },
                         icon: const Icon(Icons.logout)),
                     leading: const Icon(Icons.person),
-                    title: Text(content["name"]),
-                    subtitle: const Text("Nombre"))),
-            Card(
-                child: ListTile(
-                    leading: const Icon(Icons.important_devices),
-                    title: Text(content["user_id"]),
-                    subtitle: const Text("Id"))),
+                    title: Text(content["userName"] ?? ""),
+                    subtitle: const Text("Nombre de usuario"))),
             Card(
                 child: ListTile(
                     leading: const Icon(Icons.email),
@@ -53,6 +48,7 @@ class SettingMode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mainProvider = Provider.of<MainProvider>(context);
+
     return Column(
       children: <Widget>[
         const SizedBox(
