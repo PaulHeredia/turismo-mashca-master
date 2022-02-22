@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+//import 'package:mashcas_turismo/src/pages/login_page.dart';
 import 'package:mashcas_turismo/src/providers/main_providers.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,12 +25,12 @@ class SettingsPage extends StatelessWidget {
                     trailing: IconButton(
                         onPressed: () {
                           mainProvider.token = "";
-                          Navigator.pushNamed(context, "/login");
+                          Phoenix.rebirth(context);
                         },
                         icon: const Icon(Icons.logout)),
                     leading: const Icon(Icons.person),
-                    title: Text(content["userName"] ?? ""),
-                    subtitle: const Text("Nombre de usuario"))),
+                    title: Text(content["name"] ?? ""),
+                    subtitle: const Text("Nombre"))),
             Card(
                 child: ListTile(
                     leading: const Icon(Icons.email),

@@ -30,8 +30,7 @@ class _UbiacionWidgetState extends State<UbiacionWidget> {
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Center(
-              child: SizedBox(
-                  child: Text('Error al consultar los mantenimientos.')),
+              child: SizedBox(child: Text('Error al consultar el Lugar.')),
             );
           }
 

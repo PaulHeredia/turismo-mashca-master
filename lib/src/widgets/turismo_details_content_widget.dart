@@ -18,17 +18,8 @@ class TurismoDetailsContentWidget extends StatelessWidget {
               const SizedBox(height: 8),
               ExpandText(
                 "Descripción: " + turismo.descripcion.toString(),
-                maxLines: 100,
+                maxLines: 5,
                 arrowPadding: const EdgeInsets.all(0),
-              ),
-              ExpandText(
-                "Longitud: " + turismo.longitud.toString(),
-                maxLines: 3,
-                arrowPadding: const EdgeInsets.all(0),
-              ),
-              Text(
-                "Latitud: " + turismo.latitud.toString(),
-                textAlign: TextAlign.right,
               ),
             ],
           ),

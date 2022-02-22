@@ -25,7 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Stack(
         children: [
           Container(
-            color: Theme.of(context).primaryColorLight,
+            color: const Color.fromARGB(255, 27, 40, 57),
             height: size * 0.4,
           ),
           Padding(
@@ -36,7 +36,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: Text("Registro de usuario",
                       style: Theme.of(context).textTheme.headline4!.apply(
-                          color: Theme.of(context).scaffoldBackgroundColor)),
+                          color: const Color.fromARGB(255, 253, 182, 4))),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -103,8 +103,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                           },
                                           icon: Icon(
                                             _obscureText
-                                                ? Icons.visibility
-                                                : Icons.visibility_off,
+                                                ? Icons.visibility_off
+                                                : Icons.visibility,
                                           )),
                                       icon: const Icon(Icons.verified_user),
                                       labelText: "Contraseña"));
@@ -127,9 +127,33 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 await _usrServ.postUsuario(usr);
                                             if (result == 201) {
                                               Navigator.pop(context);
+                                            } else {
+                                              showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                      title: const Text(
+                                                        'El correo ya se encuentra registrado',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      actions: [
+                                                        TextButton(
+                                                            child: const Text(
+                                                              'Continuar',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            })
+                                                      ],
+                                                    );
+                                                  });
                                             }
-                                            // ignore: avoid_print
-                                            print(result);
                                           }
                                         : null,
                                     icon: const Icon(Icons.login),
@@ -139,11 +163,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Text("¿Ya tienes una cuenta?"),
                             TextButton(
                                 onPressed: () {
                                   Navigator.pushNamed(context, "/login");
                                 },
-                                child: const Text("Inicio sesión"))
+                                child: const Text("Iniciar sesión"))
                           ],
                         )
                       ],

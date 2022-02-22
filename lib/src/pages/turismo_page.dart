@@ -30,7 +30,7 @@ class TurismoPage extends StatelessWidget {
             ),
             SliverFillRemaining(
               child: TurismoDetailsWidget(turismo: turismo),
-            )
+            ),
           ],
         ),
       ),

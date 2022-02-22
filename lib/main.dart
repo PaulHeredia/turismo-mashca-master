@@ -2,11 +2,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mashcas_turismo/src/pages/home_page.dart';
 import 'package:mashcas_turismo/src/pages/login_page.dart';
-import 'package:mashcas_turismo/src/pages/settings_page.dart';
+//import 'package:mashcas_turismo/src/pages/settings_page.dart';
 import 'package:mashcas_turismo/src/pages/signup_page.dart';
 import 'package:mashcas_turismo/src/providers/main_providers.dart';
 
@@ -65,7 +66,7 @@ Future<void> main() async {
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => MainProvider()),
-  ], child: const MyApp()));
+  ], child: Phoenix(child: const MyApp())));
 }
 
 class MyApp extends StatefulWidget {
@@ -131,7 +132,7 @@ class _MyAppState extends State<MyApp> {
                   // "/home": (context) => const HomePage(),
                   "/login": (context) => const LoginPage(),
                   "/signup": (context) => const SignUpPage(),
-                  "/settings": (context) => const SettingsPage(),
+                  // "/settings": (context) => const SettingsPage(),
                 },
                 home: mainProvider.token == ""
                     ? const LoginPage()

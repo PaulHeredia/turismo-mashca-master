@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = false;
+  bool _obscureText = true;
   final LoginBloc _loginBloc = LoginBloc();
 
   @override
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Stack(
         children: [
           Container(
-            color: Theme.of(context).primaryColorDark,
+            color: const Color.fromARGB(255, 27, 40, 57),
             height: size * 0.4,
           ),
           Padding(
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: Text("Inicio de sesión",
                       style: Theme.of(context).textTheme.headline4!.apply(
-                          color: Theme.of(context).scaffoldBackgroundColor)),
+                          color: const Color.fromARGB(255, 253, 182, 4))),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 30.0),
+                        horizontal: 20.0, vertical: 50.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -57,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                             stream: _loginBloc.emailStream,
                             builder: (context, snapshot) {
                               return TextField(
+                                  keyboardType: TextInputType.emailAddress,
                                   onChanged: _loginBloc.changeEmail,
                                   decoration: InputDecoration(
                                       errorText: snapshot.error?.toString(),
@@ -79,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                                           },
                                           icon: Icon(
                                             _obscureText
-                                                ? Icons.visibility
-                                                : Icons.visibility_off,
+                                                ? Icons.visibility_off
+                                                : Icons.visibility,
                                           )),
                                       icon: const Icon(Icons.lock),
                                       labelText: "Contraseña"));
@@ -105,6 +106,32 @@ class _LoginPageState extends State<LoginPage> {
                                             if (resp.containsKey("idToken")) {
                                               mainProvider.token =
                                                   resp['idToken'];
+                                            } else {
+                                              showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                      title: const Text(
+                                                        'Correo o Contraseña incorrectos',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      actions: [
+                                                        TextButton(
+                                                            child: const Text(
+                                                              'Continuar',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            })
+                                                      ],
+                                                    );
+                                                  });
                                             }
                                           }
                                         : null,
