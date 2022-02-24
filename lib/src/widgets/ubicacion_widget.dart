@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mashcas_turismo/src/models/turismo_model.dart';
-
 import 'package:mashcas_turismo/src/pages/location_page.dart';
-import 'package:mashcas_turismo/src/utils/main_menu.dart';
 
 class UbiacionWidget extends StatefulWidget {
   const UbiacionWidget({Key? key}) : super(key: key);

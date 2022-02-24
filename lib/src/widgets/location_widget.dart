@@ -77,6 +77,7 @@ class _LocationWidgetState extends State<LocationWidget> {
             const SliverFillRemaining(
               child: MoreInfoWidget(),
             ),
+            // ignore: deprecated_member_use
           ],
         ),
       ),
