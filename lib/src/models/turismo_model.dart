@@ -5,36 +5,19 @@ import 'dart:convert';
 
 Turismo turismoFromJson(String str) => Turismo.fromJson(json.decode(str));
 
-String turismoToJson(Turismo data) => json.encode(data.toJson());
-
 class Turismo {
-  Turismo({
-    this.nombre,
-    this.descripcion,
-    this.imagen,
-    this.longitud,
-    this.latitud,
-  });
+  Turismo({this.nombre, this.descripcion, this.imagen, this.lat, this.lng});
 
   String? nombre;
   String? descripcion;
   String? imagen;
-  double? longitud;
-  double? latitud;
-
+  double? lat;
+  double? lng;
   factory Turismo.fromJson(Map<String, dynamic> json) => Turismo(
         nombre: json["nombre"],
         descripcion: json["descripcion"],
         imagen: json["imagen"],
-        longitud: json["longitud"].toDouble(),
-        latitud: json["latitud"].toDouble(),
+        lat: json["lat"],
+        lng: json["lng"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "nombre": nombre,
-        "descripcion": descripcion,
-        "imagen": imagen,
-        "longitud": longitud,
-        "latitud": latitud,
-      };
 }

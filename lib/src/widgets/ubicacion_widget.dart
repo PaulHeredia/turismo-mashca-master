@@ -1,9 +1,8 @@
-import 'dart:async';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mashcas_turismo/src/models/turismo_model.dart';
+
+import 'package:mashcas_turismo/src/pages/location_page.dart';
+import 'package:mashcas_turismo/src/utils/main_menu.dart';
 
 class UbiacionWidget extends StatefulWidget {
   const UbiacionWidget({Key? key}) : super(key: key);
@@ -13,62 +12,74 @@ class UbiacionWidget extends StatefulWidget {
 }
 
 class _UbiacionWidgetState extends State<UbiacionWidget> {
-  final Completer<GoogleMapController> _controller = Completer();
-
-  final CameraPosition _kLatacunga = const CameraPosition(
-    target: LatLng(-0.9333, -78.6185),
-    zoom: 14,
-  );
-
-  final Stream<QuerySnapshot> _mantenimientoStrem =
-      FirebaseFirestore.instance.collection('places').snapshots();
-
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-        stream: _mantenimientoStrem,
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return const Center(
-              child: SizedBox(child: Text('Error al consultar el Lugar.')),
-            );
-          }
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'User location application',
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: Scaffold(
+        backgroundColor: Colors.cyan,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.location_on,
+                size: 45.0,
+                color: Colors.white,
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                "Ubicación",
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: SizedBox(
-                  height: 50.0,
-                  width: 50.0,
-                  child: CircularProgressIndicator()),
-            );
-          }
-
-          if (snapshot.hasData) {
-            Set<Marker> kMnts =
-                snapshot.data!.docs.map((DocumentSnapshot document) {
-              Turismo model =
-                  Turismo.fromJson(document.data() as Map<String, dynamic>);
-
-              Marker marker = Marker(
-                  infoWindow: InfoWindow(title: model.nombre),
-                  markerId: MarkerId(model.nombre ?? ""),
-                  position: LatLng(
-                      model.latitud ?? -0.9333, model.longitud ?? -78.6185));
-
-              return marker;
-            }).toSet();
-
-            return GoogleMap(
-              markers: kMnts,
-              mapType: MapType.terrain,
-              initialCameraPosition: _kLatacunga,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-            );
-          }
-
-          return const SizedBox();
-        });
+              SizedBox(
+                height: 05.0,
+              ),
+              // button for taking the location
+              // ignore: deprecated_member_use
+              FlatButton(
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LocationPage()),
+                  );
+                },
+                child: Text("¿Cómo llegar?"),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+    /*
+    
+    return Center(
+      // ignore: deprecated_member_use
+      child: RaisedButton(
+        child: Text('Mostrar ubicacion'),
+        onPressed: () {
+          getCurrentLocation();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const LocationPage()),
+          );
+        },
+      ),
+    );
+     */
   }
 }
