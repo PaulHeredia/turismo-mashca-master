@@ -21,6 +21,32 @@ class TurismoDetailsContentWidget extends StatelessWidget {
                 maxLines: 5,
                 arrowPadding: const EdgeInsets.all(0),
               ),
+              Expanded(
+                child: Column(
+                  children: [
+                    RatingBar.builder(
+                      initialRating: turismo.calificacion! / 2,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    ),
+                    Text(
+                      "Calificacion: " +
+                          (turismo.calificacion! / 2).toStringAsFixed(1),
+                      style: TextStyle(
+                          color: Colors.amber, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
