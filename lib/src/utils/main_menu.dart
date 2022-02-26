@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mashcas_turismo/src/pages/settings_page.dart';
+import 'package:mashcas_turismo/src/widgets/calendar_widget.dart';
 import 'package:mashcas_turismo/src/widgets/experiencia_form_widget.dart';
 import 'package:mashcas_turismo/src/widgets/location_widget.dart';
 import 'package:mashcas_turismo/src/widgets/turismo_widget.dart';
@@ -18,6 +19,7 @@ List<ItemMenu> menuOptions = [
   ItemMenu(Icons.forum, "Experiencia"),
   ItemMenu(Icons.account_box, "Mi cuenta"),
   ItemMenu(Icons.web_stories, "Descubre"),
+  ItemMenu(Icons.view_agenda, "Activiades"),
 ];
 
 List<Widget> homeWidgets = [
@@ -25,5 +27,6 @@ List<Widget> homeWidgets = [
   const TurismoWidget(),
   const ExperienciaFormWidget(isInicio: false, nombre_lugar: ""),
   const SettingsPage(),
-  const Location1Widget()
+  const Location1Widget(),
+  CalendarWidget()
 ];
